@@ -9,11 +9,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table id="listaus" class="wrapper">
+<table id="listaus">
 	<thead>
 		<tr>
-			<th colspan="2" class="hakusana">Hakusana:</th>
-			<th><input type="text" id="hakusana"></th>
+			<th colspan="5" class="oikealle"><a id="linkki" href="lisaaasiakas.jsp">Lisää uusi asiakas</a></th>
+		</tr>
+		<tr>
+			<th colspan="2" class="oikealle">Hakusana:</th>
+			<th colspan="2"><input type="text" id="hakusana"></th>
 			<th><input type="button" value="hae" id="hakunappi" onclick="haeAsiakkaat()"></th>
 		</tr>	
 		<tr>
@@ -21,6 +24,7 @@
 			<th>Sukunimi</th>
 			<th>Puhelin</th>
 			<th>Sähköposti</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody id="tbody">

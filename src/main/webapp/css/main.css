@@ -1,8 +1,4 @@
 @charset "ISO-8859-1";
-
-.hakusana { text-align: right;
-}
-
 table {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;  
@@ -24,5 +20,20 @@ table th {
   text-align: left;
   background-color: #4CAF50;
   color: white;
+}
+
+.poista {
+	color: red;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.oikealle{
+	text-align: right;
+}
+
+#linkki{
+	color: white;
+	text-decoration: underline;
 }
 
