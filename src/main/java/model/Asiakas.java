@@ -15,6 +15,13 @@ public class Asiakas {
 		this.puhelin = puhelin;
 		this.sposti = sposti;
 	}
+	
+	public Asiakas(String etunimi, String sukunimi, String puhelin, String sposti) {
+		this.etunimi = etunimi;
+		this.sukunimi = sukunimi;
+		this.puhelin = puhelin;
+		this.sposti = sposti;
+	}
 
 	public int getAsiakas_id() {
 		return asiakas_id;

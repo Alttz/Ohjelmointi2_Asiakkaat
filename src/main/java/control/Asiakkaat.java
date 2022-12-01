@@ -29,6 +29,7 @@ public class Asiakkaat extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Asiakkaat.doGet()");
 		String hakusana = request.getParameter("hakusana");
+		String asiakas_id = request.getParameter("asiakas_id");
 		Dao dao = new Dao();
 		ArrayList<Asiakas> asiakkaat;
 		String strJSON="";
@@ -39,6 +40,12 @@ public class Asiakkaat extends HttpServlet {
 				asiakkaat = dao.getAllItems();
 			}
 			strJSON = new Gson().toJson(asiakkaat);
+		} else if(asiakas_id!=null) {
+			Asiakas asiakas = dao.getItem(Integer.parseInt(asiakas_id));
+			strJSON = new Gson().toJson(asiakas);
+		} else {
+			asiakkaat = dao.getAllItems(); //Haetaan kaikki asiakkaat
+			strJSON = new Gson().toJson(asiakkaat);	
 		}
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -65,6 +72,16 @@ public class Asiakkaat extends HttpServlet {
 	// Tietojen muuttaminen
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Asiakkaat.doPut()");
+		String strJSONInput = request.getReader().lines().collect(Collectors.joining());
+		Asiakas asiakas = new Gson().fromJson(strJSONInput, Asiakas.class);
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		Dao dao = new Dao();
+		if(dao.changeItem(asiakas)) {
+			out.println("{\"response\":1}");
+		} else {
+			out.println("{\"response\":0}");
+		}
 	}
 	
 	// Tietojen poistaminen
